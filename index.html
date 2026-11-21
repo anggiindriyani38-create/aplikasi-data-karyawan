@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Data Karyawan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>EMPLOYEE</h2>
+        <p class="logo-text">Management System</p>
+
+        <nav>
+            <a href="#" class="active">Dashboard</a>
+            <a href="#data-karyawan">Data Karyawan</a>
+            <a href="#form-karyawan">Tambah Karyawan</a>
+        </nav>
+    </div>
+
+    <main class="main-content">
+
+        <header>
+            <div>
+                <h1>Dashboard</h1>
+                <p>Selamat datang di aplikasi data karyawan</p>
+            </div>
+            <div class="admin">Administrator</div>
+        </header>
+
+        <section class="stats">
+            <div class="stat-card">
+                <p>Total Karyawan</p>
+                <h2 id="totalKaryawan">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <p>Departemen</p>
+                <h2 id="totalDepartemen">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <p>Karyawan Aktif</p>
+                <h2 id="totalAktif">0</h2>
+            </div>
+        </section>
+
+        <section class="panel" id="form-karyawan">
+            <h2>Formulir Karyawan</h2>
+
+            <form id="employeeForm">
+                <input type="hidden" id="employeeId">
+
+                <div class="form-grid">
+                    <div>
+                        <label>Nama Lengkap</label>
+                        <input type="text" id="nama" placeholder="Masukkan nama" required>
+                    </div>
+
+                    <div>
+                        <label>NIK Karyawan</label>
+                        <input type="text" id="nik" placeholder="Masukkan NIK" required>
+                    </div>
+
+                    <div>
+                        <label>Jabatan</label>
+                        <input type="text" id="jabatan" placeholder="Masukkan jabatan" required>
+                    </div>
+
+                    <div>
+                        <label>Departemen</label>
+                        <input type="text" id="departemen" placeholder="Masukkan departemen" required>
+                    </div>
+
+                    <div>
+                        <label>Nomor Telepon</label>
+                        <input type="tel" id="telepon" placeholder="Masukkan nomor telepon" required>
+                    </div>
+
+                    <div>
+                        <label>Status</label>
+                        <select id="status">
+                            <option value="Aktif">Aktif</option>
+                            <option value="Tidak Aktif">Tidak Aktif</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label>Alamat</label>
+                <textarea id="alamat" placeholder="Masukkan alamat karyawan" required></textarea>
+
+                <button type="submit" id="submitButton">Simpan Karyawan</button>
+            </form>
+        </section>
+
+        <section class="panel" id="data-karyawan">
+            <div class="table-header">
+                <h2>Daftar Karyawan</h2>
+                <input type="search" id="searchInput" placeholder="Cari karyawan...">
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>NIK</th>
+                            <th>Jabatan</th>
+                            <th>Departemen</th>
+                            <th>Telepon</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="employeeTable">
+                        <tr>
+                            <td colspan="8">Belum ada data karyawan</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer>
+            © 2026 Employee Management System
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

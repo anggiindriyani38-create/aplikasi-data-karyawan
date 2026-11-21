@@ -188,3 +188,94 @@ searchInput.addEventListener("input", function() {
 
 // Menampilkan data saat aplikasi dibuka
 renderEmployees();
+
+// ===================================
+// SISTEM LOGIN DAN LOGOUT
+// ===================================
+
+// Username dan password administrator
+const ADMIN_USERNAME = "admin";
+const ADMIN_PASSWORD = "admin123";
+
+// Mengambil elemen HTML
+const loginContainer = document.getElementById("loginContainer");
+const appContainer = document.getElementById("appContainer");
+const loginForm = document.getElementById("loginForm");
+const loginMessage = document.getElementById("loginMessage");
+const logoutButton = document.getElementById("logoutButton");
+const loggedInUser = document.getElementById("loggedInUser");
+
+// Memeriksa status login saat halaman dibuka
+function checkLogin() {
+    const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+
+    if (isLoggedIn === "true") {
+        showDashboard();
+    } else {
+        showLogin();
+    }
+}
+
+// Menampilkan halaman login
+function showLogin() {
+    loginContainer.style.display = "flex";
+    appContainer.style.display = "none";
+}
+
+// Menampilkan dashboard
+function showDashboard() {
+    loginContainer.style.display = "none";
+    appContainer.style.display = "block";
+
+    loggedInUser.textContent = "Administrator";
+}
+
+// Proses login
+loginForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const username = document.getElementById("loginUsername").value;
+    const password = document.getElementById("loginPassword").value;
+
+    if (
+        username === ADMIN_USERNAME &&
+        password === ADMIN_PASSWORD
+    ) {
+        sessionStorage.setItem("isLoggedIn", "true");
+
+        loginMessage.textContent = "";
+
+        loginForm.reset();
+
+        showDashboard();
+
+        alert("Login berhasil! Selamat datang.");
+    } else {
+        loginMessage.textContent =
+            "Username atau password salah!";
+
+        document.getElementById("loginPassword").value = "";
+    }
+});
+
+// Proses logout
+logoutButton.addEventListener("click", function() {
+    const confirmation = confirm(
+        "Apakah kamu yakin ingin logout?"
+    );
+
+    if (confirmation) {
+        sessionStorage.removeItem("isLoggedIn");
+
+        showLogin();
+
+        loginForm.reset();
+
+        loginMessage.textContent = "";
+
+        alert("Kamu berhasil logout.");
+    }
+});
+
+// Jalankan pemeriksaan login
+checkLogin();
